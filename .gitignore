@@ -45,3 +45,4 @@ functions/node_modules
 functions/.vercel
 .vercel
 .env
+.vercel
