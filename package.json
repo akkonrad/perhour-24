@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "api:start": "cd functions && npm start",
+    "api:deploy": "cd functions && vercel",
+    "api:deploy:prod": "cd functions && vercel --prod"
   },
   "private": true,
   "dependencies": {

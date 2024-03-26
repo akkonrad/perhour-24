@@ -10,6 +10,6 @@ export default function handler(req, res) {
       res.status(500).json({error: error.message});
     }
   }
-  run().catch(console.dir);
+  run().catch(error => res.status(500).json({error: error.message}));
 
 }
