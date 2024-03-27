@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     const lastInsertedCurrency = await CurrencySerice.getLatestCurrency();
 
-    const lastInsertedDay = lastInsertedCurrency?.time.split('T')[0];
+    const lastInsertedDay = lastInsertedCurrency?.time.toISOString().split('T')[0];
     const today = (new Date()).toISOString().split('T')[0];
 
     if (today !== lastInsertedDay) {

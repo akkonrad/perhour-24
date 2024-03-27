@@ -21,7 +21,7 @@ export const CurrencySerice = {
   getLatestCurrency: async function (){
     const client = this.client();
     await client.connect();
-    const data = await client.db(process.env.MONGO_DATABASE).collection(process.env.MONGO_COLLECTION).find({}).sort({time: 1}).limit(1).toArray();
+    const data = await client.db(process.env.MONGO_DATABASE).collection(process.env.MONGO_COLLECTION).find({}).sort({time: -1}).limit(1).toArray();
     await client.close();
     return data[0];
   },
