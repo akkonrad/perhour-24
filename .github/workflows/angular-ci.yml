@@ -1,0 +1,35 @@
+name: Unit Tests
+
+on:
+  push:
+    branches-ignore: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: npm install and npm run CI commands
+        run: npm i
+
+      - name: Run unit tests
+        run: npm run test:ci
+
+      - name: Run E2E tests
+        run: npm run test:e2e:ci
+
+      - name: build app
+        run: npm run build:ci

@@ -46,3 +46,4 @@ functions/.vercel
 .vercel
 .env
 .vercel
+functions/node_modules
