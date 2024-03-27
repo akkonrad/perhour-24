@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "perhour-24:build:production"
+              "buildTarget": "perhour-24:build:production"
             },
             "development": {
-              "browserTarget": "perhour-24:build:development"
+              "buildTarget": "perhour-24:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "perhour-24:build"
+            "buildTarget": "perhour-24:build"
           }
         },
         "test": {
