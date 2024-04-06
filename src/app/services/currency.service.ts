@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Injectable, Signal} from '@angular/core';
+import {map, Observable, of} from "rxjs";
+import {toSignal} from "@angular/core/rxjs-interop";
 
-const MOCK: Currency = {
+const MOCK: CurrencyDto = {
   "meta": {
     "last_updated_at": "2024-03-21T23:59:59Z"
   },
@@ -758,6 +759,11 @@ const MOCK: Currency = {
 };
 
 export interface Currency {
+  updated?: Date,
+  rates: Record<string, number>
+}
+
+export interface CurrencyDto {
   meta: {
     last_updated_at: string
   },
@@ -774,7 +780,18 @@ export interface Currency {
 })
 export class CurrencyService {
 
-  getCurrencies(): Observable<Currency> {
-    return of(MOCK);
+  getCurrencies(): Signal<Currency | undefined> {
+    const currencies$ = of(MOCK).pipe(
+      map(currencies => {
+            return {
+              updated: new Date(currencies.meta.last_updated_at),
+              rates: Object.values(currencies.data).reduce((accumulator: Record<string, number>, currentValue: {code: string, value: number}) => {
+                accumulator[currentValue.code] = currentValue.value;
+                return accumulator;
+              }, {})
+            }
+      })
+    );
+    return toSignal(currencies$);
   }
 }

@@ -1,0 +1,29 @@
+<p>Select your current rate</p>
+<!-- Create horizontal form with material inputs:  1 dropdown and 4 text inputs -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-form-field>
+    <mat-select placeholder="Currency" formControlName="currency">
+      @for (currency of currencies; track currency) {
+        <mat-option>{{currency}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Hourly" formControlName="hourly">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Daily" formControlName="daily">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Monthly" formControlName="monthly">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Yearly" formControlName="yearly">
+  </mat-form-field>
+
+</form>

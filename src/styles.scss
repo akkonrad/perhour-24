@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$blue-palette);
+$my-accent: mat.define-palette(mat.$pink-palette);
+$my-font-family: "Ubuntu, Roboto";
+$my-typography: mat.define-typography-config(
+  $font-family: $my-font-family
+);
+
+$theme-light: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    background: mat.$grey-palette,
+  ),
+  typography: $my-typography,
+  density: 0,
+));
+
+@include mat.all-component-themes($theme-light);
+@include mat.typography-hierarchy($my-typography);
+@include mat.typography-hierarchy($my-typography);
+
+.theme-light {
+  @include mat.all-component-themes($theme-light);
+}
+
+//.theme-dark {
+//  @include mat.all-component-colors($theme-dark);
+//}
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
