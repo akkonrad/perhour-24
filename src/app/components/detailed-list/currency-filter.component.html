@@ -1,0 +1,27 @@
+<div class="currency-filter">
+  <mat-form-field appearance="fill" class="currency-filter--autocomplete">
+    <mat-label>Show currencies</mat-label>
+    <input type="text"
+           placeholder="Type currency name"
+           matInput
+           [(ngModel)]="keyword"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+      @for (option of filteredCurrencies(); track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-chip-set class="currency-filter--chips">
+    @for (selected of selectedCurrencies(); track selected) {
+      <mat-chip (removed)="removeOption(selected)">
+        {{ selected }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+
+      </mat-chip>
+    }
+  </mat-chip-set>
+</div>

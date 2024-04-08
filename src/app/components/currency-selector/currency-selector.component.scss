@@ -1,0 +1,12 @@
+.selector {
+  display: flex;
+  gap: 0.5em;
+
+  &--field {
+    width: 100%;
+  }
+
+  &--add {
+    margin-top: 0.7em;
+  }
+}

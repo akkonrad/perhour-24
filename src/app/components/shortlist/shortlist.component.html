@@ -1,1 +1,4 @@
-<p>shortlist works!</p>
+<h2>Shortlist</h2>
+@for (rate of shortlistRates(); track rate.currency) {
+  <app-currency-selector [currency]="rate.currency"></app-currency-selector>
+}

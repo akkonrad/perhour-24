@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {CurrencySelectorComponent} from "./components/currency-selector/currency-selector.component";
 import {ShortlistComponent} from "./components/shortlist/shortlist.component";
-import {DetailedListComponent} from "./components/detailed-list/detailed-list.component";
+import {CurrencyFilterComponent} from "./components/detailed-list/currency-filter.component";
 import {HeroComponent} from "./components/hero/hero.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {MatCard} from "@angular/material/card";
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import {
+  SelectedCurrenciesListComponent
+} from "./components/selected-currencies-list/selected-currencies-list.component";
 
 @Component({
   selector: 'app-root',
@@ -15,10 +17,11 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
   imports: [
     CurrencySelectorComponent,
     ShortlistComponent,
-    DetailedListComponent,
+    CurrencyFilterComponent,
     HeroComponent,
     HeaderComponent,
-    MatCard
+    MatCard,
+    SelectedCurrenciesListComponent
   ],
 })
 export class AppComponent {

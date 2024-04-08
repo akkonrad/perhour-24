@@ -1,29 +1,28 @@
-<p>Select your current rate</p>
-<!-- Create horizontal form with material inputs:  1 dropdown and 4 text inputs -->
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="form" class="selector">
 
-  <mat-form-field>
-    <mat-select placeholder="Currency" formControlName="currency">
-      @for (currency of currencies; track currency) {
-        <mat-option>{{currency}}</mat-option>
-      }
-    </mat-select>
+  <mat-label>{{ currency() }}</mat-label>
+
+  <mat-form-field class="selector--field">
+    <mat-label>Hourly</mat-label>
+    <input formControlName="hourly" matInput min="1" placeholder="Hourly" type="number">
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Hourly" formControlName="hourly">
+  <mat-form-field class="selector--field">
+    <mat-label>Daily</mat-label>
+    <input formControlName="daily" matInput min="8" placeholder="Daily" type="number">
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Daily" formControlName="daily">
+  <mat-form-field class="selector--field">
+    <mat-label>Monthly</mat-label>
+    <input formControlName="monthly" matInput min="168" placeholder="Monthly" type="number">
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Monthly" formControlName="monthly">
+  <mat-form-field class="selector--field">
+    <mat-label>Yearly</mat-label>
+    <input formControlName="yearly" matInput min="2000" placeholder="Yearly" type="number">
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Yearly" formControlName="yearly">
-  </mat-form-field>
-
+  <button (click)="onAddClicked()" [disabled]="form.invalid" class="selector--add" color="accent" mat-mini-fab matTooltip="Add current values to the shortlist" type="button">
+    <mat-icon>add</mat-icon>
+  </button>
 </form>

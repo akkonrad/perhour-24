@@ -3,22 +3,22 @@ import {Rate} from "../../models/rate.type";
 import {CurrencySelectorComponent} from "../currency-selector/currency-selector.component";
 
 @Component({
-  selector: 'app-shortlist',
+  selector: 'app-selected-currencies-list',
   standalone: true,
   imports: [
     CurrencySelectorComponent
   ],
-  templateUrl: './shortlist.component.html',
-  styleUrl: './shortlist.component.scss'
+  templateUrl: './selected-currencies-list.component.html',
+  styleUrl: './selected-currencies-list.component.scss'
 })
-export class ShortlistComponent {
-  shortlistRates = signal<Rate[]>([
+export class SelectedCurrenciesListComponent {
+  selectedRates = signal<Rate[]>([
     {
       currency: 'PLN',
-      hourly: 195,
-      daily: 195*8,
-      monthly: 195*168,
-      yearly: 195*2000,
+      hourly: 100,
+      daily: 800,
+      monthly: 16800,
+      yearly: 2000,
       usd: 4
     },
     {

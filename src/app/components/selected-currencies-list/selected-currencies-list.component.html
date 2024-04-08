@@ -1,0 +1,4 @@
+<h2>Chosen currencies</h2>
+@for (rate of selectedRates(); track rate.currency) {
+  <app-currency-selector [currency]="rate.currency"></app-currency-selector>
+}

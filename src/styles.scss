@@ -2,9 +2,9 @@
 
 @include mat.core();
 
-$my-primary: mat.define-palette(mat.$blue-palette);
-$my-accent: mat.define-palette(mat.$pink-palette);
-$my-font-family: "Ubuntu, Roboto";
+$my-primary: mat.define-palette(mat.$green-palette);
+$my-accent: mat.define-palette(mat.$lime-palette);
+$my-font-family: Ubuntu, Roboto;
 $my-typography: mat.define-typography-config(
   $font-family: $my-font-family
 );
@@ -35,4 +35,5 @@ $theme-light: mat.define-light-theme((
 body, html {
   margin: 0;
   padding: 0;
+  font-family: $my-font-family;
 }
