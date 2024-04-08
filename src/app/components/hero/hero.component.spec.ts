@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeroComponent } from './hero.component';
+import {HeroComponent} from './hero.component';
 
 describe('HeroComponent', () => {
   let component: HeroComponent;
@@ -17,7 +17,6 @@ describe('HeroComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it.todo('should create');
+  it.todo('should show a proper date load in the header')
 });

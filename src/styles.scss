@@ -21,11 +21,10 @@ $theme-light: mat.define-light-theme((
 
 @include mat.all-component-themes($theme-light);
 @include mat.typography-hierarchy($my-typography);
-@include mat.typography-hierarchy($my-typography);
 
-.theme-light {
-  @include mat.all-component-themes($theme-light);
-}
+//.theme-light {
+//  @include mat.all-component-themes($theme-light);
+//}
 
 //.theme-dark {
 //  @include mat.all-component-colors($theme-dark);
