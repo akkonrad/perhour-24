@@ -9,6 +9,8 @@ $my-typography: mat.define-typography-config(
   $font-family: $my-font-family
 );
 
+@include mat.core();
+
 $theme-light: mat.define-light-theme((
   color: (
     primary: $my-primary,
