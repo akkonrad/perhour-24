@@ -1,6 +1,6 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="form" class="selector">
+<mat-label class="selector--label">{{ currency() }}</mat-label>
 
-  <mat-label class="selector--label">{{ currency() }}</mat-label>
+<form [formGroup]="form" class="selector">
 
   <mat-form-field class="selector--field">
     <mat-label>Hourly</mat-label>
@@ -19,10 +19,7 @@
 
   <mat-form-field class="selector--field">
     <mat-label>Yearly</mat-label>
-    <input formControlName="yearly" matInput min="2000" placeholder="Yearly" type="number">
+    <input formControlName="yearly" matInput min="2000" placeholder="Yearly">
   </mat-form-field>
 
-  <button (click)="onAddClicked()" [disabled]="form.invalid" class="selector--add" color="accent" mat-mini-fab matTooltip="Add current values to the shortlist" type="button">
-    <mat-icon>add</mat-icon>
-  </button>
 </form>
