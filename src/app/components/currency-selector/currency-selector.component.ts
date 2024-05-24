@@ -19,8 +19,6 @@ const DAYS_IN_MONTH = 21;
 
 /* TODO:
     - form has fields:
-      - add named templates for the bottom text (daily/hourly/monthly/yearly)
-      - add a template for button/actions
       - add animation on appearing
       - add aria label everywhere
  */
@@ -143,11 +141,12 @@ export class CurrencySelectorComponent {
   }
 
   private emitRateChange(value: number, period: Period): void {
-    this.rateChange.emit({
+    const rateChange: RateChange = {
       currency: this.currency(),
       period,
       value
-    });
+    };
+    this.rateChange.emit(rateChange);
   }
 
   private watchCurrentUserRateChange(): void {
@@ -165,9 +164,10 @@ export class CurrencySelectorComponent {
 
       const valueInUsd = this.currencyInUsd();
 
+
       const newValue = value * valueInUsd;
 
-      this.form.get(period)!.setValue(newValue);
+      this.patchFormByValue(newValue, period);
     });
   }
 }

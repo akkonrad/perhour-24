@@ -1,33 +1,37 @@
 import {Component, signal} from '@angular/core';
-import {Rate} from "../../models/rate.type";
+import {Rate, RateChange} from "../../models/rate.type";
 import {CurrencySelectorComponent} from "../currency-selector/currency-selector.component";
 
 @Component({
   selector: 'app-shortlist',
   standalone: true,
   imports: [
-    CurrencySelectorComponent
+    CurrencySelectorComponent,
   ],
   templateUrl: './shortlist.component.html',
   styleUrl: './shortlist.component.scss'
 })
 export class ShortlistComponent {
-  shortlistRates = signal<Rate[]>([
+  mockCurrencies = signal([
     {
-      currency: 'PLN',
-      hourly: 195,
-      daily: 195*8,
-      monthly: 195*168,
-      yearly: 195*2000,
-      usd: 4
+      currency: 'USD',
+      rateInUsd: 1
     },
     {
-      currency: 'GBP',
-      hourly: 100,
-      daily: 800,
-      monthly: 16800,
-      yearly: 2000,
-      usd: 0.5
+      currency: 'X10',
+      rateInUsd: 10
     },
+    {
+      currency: 'X0.1',
+      rateInUsd: 0.1
+    }
   ])
+
+  currentUserRate = signal<RateChange | undefined>(undefined);
+
+  shortlistRates = signal<Rate[]>([]);
+
+  onRateChanges(rate: RateChange) {
+    this.currentUserRate.set(rate);
+  }
 }

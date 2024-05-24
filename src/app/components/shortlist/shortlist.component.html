@@ -1,4 +1,5 @@
 <h2>Shortlist</h2>
-@for (rate of shortlistRates(); track rate.currency) {
-  <app-currency-selector [currency]="rate.currency"></app-currency-selector>
+<!--@for (rate of shortlistRates(); track rate.currency) {-->
+@for (rate of mockCurrencies(); track rate.currency) {
+  <app-currency-selector [currency]="rate.currency" [currencyInUsd]="rate.rateInUsd" (rateChange)="onRateChanges($event)" [currentUserRate]="currentUserRate()"></app-currency-selector>
 }
