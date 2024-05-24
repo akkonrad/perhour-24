@@ -35,6 +35,7 @@ const DAYS_IN_MONTH = 21;
 export class CurrencySelectorComponent {
 
   currency = input<Currency>('Currency');
+  currencyInUsd = input<number>(1); // use state instead?
   currentUserRate = input<RateChange>();
 
   @Output()
@@ -55,7 +56,6 @@ export class CurrencySelectorComponent {
     this.watchMonthlyChange();
     this.watchYearlyChange();
     this.watchCurrentUserRateChange();
-
   }
 
   private watchHourChange(): void {
@@ -163,7 +163,11 @@ export class CurrencySelectorComponent {
         return;
       }
 
-      this.form.get(period)!.setValue(value);
+      const valueInUsd = this.currencyInUsd();
+
+      const newValue = value * valueInUsd;
+
+      this.form.get(period)!.setValue(newValue);
     });
   }
 }
