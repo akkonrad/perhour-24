@@ -1,17 +1,40 @@
-.selector {
-  display: flex;
-  gap: 0.5em;
+@use "@angular/material" as mat;
+@import 'theme';
 
-  &--label {
-    padding: 1.15em;
+.form {
+  &:focus-within {
+    background-color: mat.get-theme-color($theme-light, accent, 100);
+    transition: background-color 0.3s;
+  }
+
+  &:not(:focus-within) {
+    background-color: inherit;
+  }
+
+  .label {
+    padding: 1.15em 0;
     font-weight: bold;
+
+    .label-minor {
+      font-weight: normal;
+      color: #999;
+    }
   }
 
-  &--field {
+  .fields {
+    padding-top: 1em;
+    display: flex;
+    gap: 1em;
     width: 100%;
-  }
+    justify-content: space-between;
 
-  &--add {
-    margin-top: 0.7em;
+
+    .field {
+      width: 100%;
+    }
+
+    .add {
+      margin-top: 0.7em;
+    }
   }
 }

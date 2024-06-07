@@ -1,40 +1,7 @@
-@use '@angular/material' as mat;
-
-@include mat.core();
-
-$my-primary: mat.define-palette(mat.$green-palette);
-$my-accent: mat.define-palette(mat.$lime-palette);
-$my-font-family: Ubuntu, Roboto;
-$my-typography: mat.define-typography-config(
-  $font-family: $my-font-family
-);
-
-@include mat.core();
-
-$theme-light: mat.define-light-theme((
-  color: (
-    primary: $my-primary,
-    accent: $my-accent,
-    background: mat.$grey-palette,
-  ),
-  typography: $my-typography,
-  density: 0,
-));
-
-@include mat.all-component-themes($theme-light);
-@include mat.typography-hierarchy($my-typography);
-
-//.theme-light {
-//  @include mat.all-component-themes($theme-light);
-//}
-
-//.theme-dark {
-//  @include mat.all-component-colors($theme-dark);
-//}
-
+@import 'theme';
 
 body, html {
   margin: 0;
   padding: 0;
-  font-family: $my-font-family;
+  font-family: $perhour-font-family;
 }

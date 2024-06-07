@@ -1,25 +1,34 @@
-<mat-label class="selector--label">{{ currency() }}</mat-label>
+<form [formGroup]="form" class="form">
 
-<form [formGroup]="form" class="selector">
+  <mat-label class="label">
+    {{ currency() }}
 
-  <mat-form-field class="selector--field">
-    <mat-label>Hourly</mat-label>
-    <input formControlName="hourly" matInput min="1" placeholder="Hourly" type="number">
-  </mat-form-field>
+    @if (currency() !== 'USD') {
+      <span class="label-minor">(1{{ currency() }} = {{ currencyInUsd() }}
+        USD / 1 USD = {{ currencyInUsd() + ' ' + currency() }})</span>
+    }
+  </mat-label>
 
-  <mat-form-field class="selector--field">
-    <mat-label>Daily</mat-label>
-    <input formControlName="daily" matInput min="8" placeholder="Daily" type="number">
-  </mat-form-field>
+  <div class="fields">
 
-  <mat-form-field class="selector--field">
-    <mat-label>Monthly</mat-label>
-    <input formControlName="monthly" matInput min="168" placeholder="Monthly" type="number">
-  </mat-form-field>
+    <mat-form-field class="field">
+      <mat-label>Hourly</mat-label>
+      <input formControlName="hourly" matInput min="1" placeholder="Hourly" type="number">
+    </mat-form-field>
 
-  <mat-form-field class="selector--field">
-    <mat-label>Yearly</mat-label>
-    <input formControlName="yearly" matInput min="2000" placeholder="Yearly">
-  </mat-form-field>
+    <mat-form-field class="field">
+      <mat-label>Daily</mat-label>
+      <input formControlName="daily" matInput min="8" placeholder="Daily" type="number">
+    </mat-form-field>
 
+    <mat-form-field class="field">
+      <mat-label>Monthly</mat-label>
+      <input formControlName="monthly" matInput min="168" placeholder="Monthly" type="number">
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <mat-label>Yearly</mat-label>
+      <input formControlName="yearly" matInput min="2000" placeholder="Yearly">
+    </mat-form-field>
+  </div>
 </form>

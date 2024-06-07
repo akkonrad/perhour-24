@@ -79,7 +79,6 @@ describe('CurrencySelectorComponent', () => {
   it('should emit value to output on form change', () => {
     jest.spyOn(component.rateChange, 'emit');
 
-
     // given
     const hourlyControl: AbstractControl = component.form.get('hourly')!;
 
@@ -90,7 +89,8 @@ describe('CurrencySelectorComponent', () => {
     expect(component.rateChange.emit).toHaveBeenCalledWith({
       currency: 'Currency', // initial default value
       period: 'hourly',
-      value: 200
+      value: 200,
+      valueInUsd: 2600,
     });
   });
 
@@ -98,27 +98,28 @@ describe('CurrencySelectorComponent', () => {
 
     describe('and the currency is different', () => {
       it('should calculate values for USD-X = 1', () => {
-        fixture.componentRef.setInput('currentUserRate', {currency: 'USD', period: 'hourly', value: 100});
+        fixture.componentRef.setInput('currentUserRate', {currency: 'USD', period: 'hourly', value: 10, valueInUsd: 10});
+        fixture.componentRef.setInput('currencyInUsd', 1);
+        fixture.detectChanges();
+        expectFormValues(fixture, [10, 80, 1680, 20160]);
+      })
+      it('should calculate values for USD-X = 10', () => {
+        fixture.componentRef.setInput('currentUserRate', {currency: 'USD', period: 'hourly', value: 100, valueInUsd: 1000});
+        fixture.componentRef.setInput('currencyInUsd', 10);
         fixture.detectChanges();
         expectFormValues(fixture, [100, 800, 16800, 201600]);
       })
-      it('should calculate values for USD-X = 10', () => {
-        fixture.componentRef.setInput('currentUserRate', {currency: 'USD', period: 'hourly', value: 100});
-        fixture.componentRef.setInput('currencyInUsd', 10);
-        fixture.detectChanges();
-        expectFormValues(fixture, [1000, 8000, 168000, 2016000]);
-      })
       it('should calculate values for USD-X = 0.1', () => {
-        fixture.componentRef.setInput('currentUserRate', {currency: 'USD', period: 'hourly', value: 100});
+        fixture.componentRef.setInput('currentUserRate', {currency: 'USD', period: 'hourly', value: 100, valueInUsd: 10});
         fixture.componentRef.setInput('currencyInUsd', 0.1);
         fixture.detectChanges();
-        expectFormValues(fixture, [10, 80, 1680, 20160]);
+        expectFormValues(fixture, [100, 800, 16800, 201600]);
       })
     })
   })
 
   it('should not change when the currency is the same', () => {
-    fixture.componentRef.setInput('currentUserRate', {currency: 'Currency', period: 'hourly', value: 200});
+    fixture.componentRef.setInput('currentUserRate', {currency: 'Currency', period: 'hourly', value: 1, valueInUsd: 1});
     fixture.detectChanges();
     expectFormValues(fixture, [1, 8, 168, 2016]);
   })

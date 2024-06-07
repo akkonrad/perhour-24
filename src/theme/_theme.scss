@@ -1,0 +1,30 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$perhour-primary: mat.define-palette(mat.$green-palette);
+$perhour-accent: mat.define-palette(mat.$lime-palette);
+$perhour-font-family: Ubuntu, Roboto;
+$perhour-typography: mat.define-typography-config(
+  $font-family: $perhour-font-family
+);
+
+$theme-light: mat.define-light-theme((
+  color: (
+    primary: $perhour-primary,
+    accent: $perhour-accent,
+    background: mat.$grey-palette,
+  ),
+  typography: $perhour-typography,
+  density: 0,
+));
+
+@include mat.core();
+
+@include mat.all-component-themes($theme-light);
+@include mat.typography-hierarchy($perhour-typography);
+
+// create a fucntion that will allow to use color based on the theme and will basically do this: mat.get-theme-color($theme-light, primary, 100);
+
+@function get-theme-color($color, $hue) {
+  @return mat.get-palette-color($theme-light, $color, $hue);
+}

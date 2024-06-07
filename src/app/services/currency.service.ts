@@ -1,8 +1,7 @@
-import {Injectable, Signal} from '@angular/core';
-import {map, of} from "rxjs";
-import {toSignal} from "@angular/core/rxjs-interop";
-import {Currency} from "../models/rate.type";
+import {inject, Injectable} from '@angular/core';
 import {CurrencyDto} from "../models/currency-dto.type";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 const MOCK: CurrencyDto = {
   meta: {
@@ -760,29 +759,14 @@ const MOCK: CurrencyDto = {
   }
 };
 
-export interface CurrencyInUsd {
-  updated?: Date,
-  rates: Record<Currency, number>
-}
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrencyService {
 
-  getCurrencies(): Signal<CurrencyInUsd | undefined> {
-    const currencies$ = of(MOCK).pipe(
-      map(currencies => {
-            return {
-              updated: new Date(currencies.meta.last_updated_at),
-              rates: Object.values(currencies.data).reduce((accumulator: Record<string, number>, currentValue: {code: string, value: number}) => {
-                accumulator[currentValue.code] = currentValue.value;
-                return accumulator;
-              }, {})
-            }
-      })
-    );
-    return toSignal(currencies$);
+  private readonly http = inject(HttpClient);
+
+  getCurrencies(): Observable<CurrencyDto> {
+    return this.http.get<CurrencyDto>('http://localhost:3000/api/currency');
   }
 }
