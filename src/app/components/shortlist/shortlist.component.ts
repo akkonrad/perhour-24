@@ -24,16 +24,16 @@ export class ShortlistComponent {
       rateInUsd: 1
     },
     {
-      currency: 'USD2',
-      rateInUsd: 1
+      currency: 'EUR',
+      rateInUsd: 1.08
     },
     {
-      currency: 'X10',
-      rateInUsd: 10
+      currency: 'CHF',
+      rateInUsd: 1.12
     },
     {
-      currency: 'X0.1',
-      rateInUsd: 0.1
+      currency: 'GBP',
+      rateInUsd: 1.27
     }
   ])
 

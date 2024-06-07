@@ -137,7 +137,14 @@ export class CurrencySelectorComponent {
         };
         break;
     }
-    this.form.patchValue(patchValues, {emitEvent: false});
+    const patched = Object.entries(patchValues).reduce((acc: any, [key, value]) => {
+      // TODO: use correct component input instead
+      // acc[key] = (+value).toFixed(2);
+      acc[key] = value;
+      return acc;
+    }, {});
+
+    this.form.patchValue(patched, {emitEvent: false});
   }
 
   private emitRateChange(value: number, period: Period): void {
@@ -174,3 +181,6 @@ export class CurrencySelectorComponent {
     });
   }
 }
+
+
+// create a directive that will place cursor right before comma after key down
