@@ -2,6 +2,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@akkonrad/cva-schematic": [
+        "./dist/akkonrad/cva-schematic"
+      ],
+      "my-lib": [
+        "./dist/my-lib"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

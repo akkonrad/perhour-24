@@ -92,6 +92,72 @@
           }
         }
       }
+    },
+    "@akkonrad/cva-schematic": {
+      "projectType": "library",
+      "root": "libraries/cva-schematic",
+      "sourceRoot": "libraries/cva-schematic/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libraries/cva-schematic/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libraries/cva-schematic/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libraries/cva-schematic/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "libraries/cva-schematic/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "my-lib": {
+      "projectType": "library",
+      "root": "libraries/my-lib",
+      "sourceRoot": "libraries/my-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/my-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libraries/my-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libraries/my-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "libraries/my-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }

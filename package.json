@@ -11,7 +11,10 @@
     "test:watch": "ng test --watch",
     "api:start": "cd functions && npm start",
     "api:deploy": "cd functions && vercel",
-    "api:deploy:prod": "cd functions && vercel --prod"
+    "api:deploy:prod": "cd functions && vercel --prod",
+    "cva:build": " ng build --project=@akkonrad/cva-schematic",
+    "cva:watch": " ng build --project=@akkonrad/cva-schematic --watch",
+    "cva:publish": "cd dist/@akkonrad/cva-schematic && npm publish"
   },
   "private": true,
   "dependencies": {

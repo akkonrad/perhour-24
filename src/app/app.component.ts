@@ -8,6 +8,7 @@ import {MatCard} from "@angular/material/card";
 import {
   SelectedCurrenciesListComponent
 } from "./components/selected-currencies-list/selected-currencies-list.component";
+import {CvaSchematicComponent} from "../../libraries/cva-schematic/src/lib/cva-schematic.component";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import {
     HeroComponent,
     HeaderComponent,
     MatCard,
-    SelectedCurrenciesListComponent
+    SelectedCurrenciesListComponent,
+    CvaSchematicComponent
   ],
 })
 export class AppComponent {
